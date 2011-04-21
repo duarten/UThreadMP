@@ -646,17 +646,17 @@ retry:
         // NextThread has been switched out. It is now save to load its context, thus switching it in. 
         //
 
-        mov		esp, dword ptr [edx].ThreadContext	
-        pop		edi
-        pop		esi
-        pop		ebx
-        pop		ebp
+        mov     esp, dword ptr [edx].ThreadContext	
+        pop     edi
+        pop     esi
+        pop     ebx
+        pop     ebp
 
         //
         // Mark the user thread as running, preventing it from being switched in to another processor.
         //
 
-        mov		byte ptr [edx].Running, 1	
+        mov     byte ptr [edx].Running, 1	
 
         //
         // Set NextThread as the running thread.
@@ -715,16 +715,16 @@ retry:
         // stack will also be freed, we cannot call CleanupThread() while using that stack.
         //
 
-        mov		esp, dword ptr [edx].ThreadContext
-        pop		edi
-        pop		esi
-        pop		ebx
-        pop		ebp
+        mov     esp, dword ptr [edx].ThreadContext
+        pop     edi
+        pop     esi
+        pop     ebx
+        pop     ebp
 
-        mov		byte ptr [edx].Running, 1	
+        mov     byte ptr [edx].Running, 1	
 
         push    edx
-        call	CleanupThread
+        call    CleanupThread
         call    SetRunningThread
         add     esp, 4
 
