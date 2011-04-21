@@ -616,22 +616,22 @@ ContextSwitch (
         // The return address is atop the stack, having been placed there by the call to this function.
         //
 
-        push	ebp
-        push	ebx
-        push	esi
-        push	edi
+        push    ebp
+        push    ebx
+        push    esi
+        push    edi
 
         //
         // Save ESP in CurrentThread->ThreadContext.
         //
 
-        mov		dword ptr [ecx].ThreadContext, esp
+        mov     dword ptr [ecx].ThreadContext, esp
 
         //
         // Clear the Running flag, making it possible for the thread to be switched back in.
         //
 
-        mov		byte ptr [ecx].Running, 0
+        mov     byte ptr [ecx].Running, 0
 
         //
         // Spin until NextThread has been switched out. The following instructions are not being executed
